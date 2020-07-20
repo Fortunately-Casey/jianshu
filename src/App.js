@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "antd/dist/antd.css";
-import { GlobalStyle } from "./style.js";
+import { GlobalStyle } from "./static/style/style.js";
 import Header from "./common/header/index";
 class App extends Component {
   // constructor(props) {
@@ -15,5 +15,5 @@ class App extends Component {
       </Fragment>
     );
   }
-}
+} 
 export default App;
