@@ -4,6 +4,7 @@ import {
 } from 'immutable';
 const defaultState = fromJS({
   focused: false,
+  list: []
 })
 
 // 纯函数
@@ -14,6 +15,9 @@ export default (state = defaultState, action) => {
   }
   if (action.type === constans.SEARCH_INPUT_BLUR) {
     return state.set('focused', false);
+  }
+  if (action.type === constans.CHANGE_LIST) {
+    return state.set('list', action.data);
   }
   return state;
 }
