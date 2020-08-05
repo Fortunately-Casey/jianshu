@@ -31,14 +31,10 @@ export const pageChange = (page) => ({
   page: page
 })
 
-
-
 export const getList = () => {
   return (dispatch) => {
-    axios.get("/api/headerList.json").then((res) => {
-      if (res.data.success) {
-        dispatch(changeList(res.data.data))
-      }
+    axios.post("/get/getInputList").then((res) => {
+        dispatch(changeList(res.data))
     }).catch((err) => {
       console.log(err)
     })
