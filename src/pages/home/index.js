@@ -4,21 +4,11 @@ import Topic from "./components/Topic";
 import List from "./components/List";
 import Recommend from "./components/Recommend";
 import Writer from "./components/Writer";
-import axios from "axios";
+import { actionCreaters } from './store/index';
 import { connect } from "react-redux";
 class Home extends Component {
   componentDidMount() {
-    axios.post("/get/getHomeList").then((resp) => {
-      this.props.changeHomeList(resp.data);
-    });
-    // axios
-    //   .post("/api/stall/login", {
-    //     loginUserID: "18662858322",
-    //     loginPWD: "111111",
-    //   })
-    //   .then((resp) => {
-    //     console.log(resp.data.data);
-    //   });
+    this.props.changeHomeList();
   }
   render() {
     return (
@@ -41,11 +31,9 @@ class Home extends Component {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  changeHomeList(data) {
-    dispatch({
-      type:"change_home_list",
-      data:data
-    })
-  }
+  changeHomeList() {
+    const action = actionCreaters.getHomeInfo();
+    dispatch(action);
+  },
 });
 export default connect(null, mapDispatchToProps)(Home);

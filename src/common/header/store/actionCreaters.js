@@ -34,7 +34,7 @@ export const pageChange = (page) => ({
 export const getList = () => {
   return (dispatch) => {
     axios.post("/get/getInputList").then((res) => {
-        dispatch(changeList(res.data))
+      dispatch(changeList(res.data))
     }).catch((err) => {
       console.log(err)
     })

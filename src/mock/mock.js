@@ -19,7 +19,7 @@ const data = {
     },
     {
       id: 2,
-      title: "生活不需要忍受",
+      title: "生活本该如此简单",
       desc: "一个人知道自己为什么而活，就可以忍受任何一种生活。——尼采初看到这句话觉得说得很对。可是，可但是，我们有时候，真的真的不知道为什么而活…… ...",
       imgUrl: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1658603858,686533857&fm=26&gp=0.jpg"
     }
@@ -60,6 +60,21 @@ const inputData = [
   "无敌无敌",
   "localStorage"
 ]
+
+const moreData = [{
+    id: 1,
+    title: "你要知道你为什么而活",
+    desc: "一个人知道自己为什么而活，就可以忍受任何一种生活。——尼采初看到这句话觉得说得很对。可是，可但是，我们有时候，真的真的不知道为什么而活…… ...",
+    imgUrl: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1658603858,686533857&fm=26&gp=0.jpg"
+  },
+  {
+    id: 2,
+    title: "二十不惑，三十而已",
+    desc: "一个人知道自己为什么而活，就可以忍受任何一种生活。——尼采初看到这句话觉得说得很对。可是，可但是，我们有时候，真的真的不知道为什么而活…… ...",
+    imgUrl: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1658603858,686533857&fm=26&gp=0.jpg"
+  }
+]
 //定义模拟接口只能接收post请求，定义返回的数据为data
 Mock.mock('/get/getHomeList', 'post', data);
 Mock.mock('/get/getInputList', 'post', inputData);
+Mock.mock('/get/getMoreList', 'post', moreData);

@@ -1,4 +1,3 @@
-// import * as constans from './constans'
 import {
   fromJS
 } from 'immutable';
@@ -6,6 +5,7 @@ import recommend1 from '../../../static/recommend1.png';
 import recommend2 from '../../../static/recommend2.png';
 import recommend3 from '../../../static/recommend3.png';
 import recommend4 from '../../../static/recommend4.png';
+import * as constans from './contans';
 const defaultState = fromJS({
   topicList: [],
   articleList: [],
@@ -25,16 +25,22 @@ const defaultState = fromJS({
       id: 4,
       imgUrl: recommend4
     },
-  ]
+  ],
+  page: 1
 })
 
 // 纯函数
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case "change_home_list":
+    case constans.CHANGE_HOME_DATA:
       return state.merge({
         "topicList": fromJS(action.data.topicList),
         "articleList": fromJS(action.data.articleList)
+      })
+    case constans.ADD_MORE_LIST:
+      return state.merge({
+        "articleList": state.get('articleList').concat(action.moreList),
+        "page": action.nextPage + 1
       })
     default:
       return state;
