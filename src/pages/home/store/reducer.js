@@ -26,7 +26,8 @@ const defaultState = fromJS({
       imgUrl: recommend4
     },
   ],
-  page: 1
+  page: 1,
+  isShowSrollToTop: false
 })
 
 // 纯函数
@@ -42,6 +43,8 @@ export default (state = defaultState, action) => {
         "articleList": state.get('articleList').concat(action.moreList),
         "page": action.nextPage + 1
       })
+    case constans.TOGGLE_SCROLL_TOP:
+      return state.set('isShowSrollToTop',action.isShowToggle)
     default:
       return state;
   }
