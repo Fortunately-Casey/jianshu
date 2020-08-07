@@ -36,7 +36,6 @@ export const getMoreList = (page) => {
 }
 
 export const toggleBackTop = (isShow) => {
-  console.log(isShow)
   return (dispatch) => {
     dispatch(toogleScrollTop(isShow))
   }

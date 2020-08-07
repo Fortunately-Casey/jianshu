@@ -4,13 +4,23 @@ import { connect } from "react-redux";
 import { actionCreaters } from "../store";
 
 class List extends Component {
+  jumpToDetail(id) {
+    this.props.history.push({
+      pathname: "/detail",
+      state: {
+        id: id,
+      },
+    });
+  }
+
   render() {
     const { list, getMoreList, page } = this.props;
+    const jumpToDetail = this.jumpToDetail.bind(this);
     return (
       <div>
-        {list.map((item,key) => {
+        {list.map((item, key) => {
           return (
-            <ListItem key={key}>
+            <ListItem key={key} onClick={() => jumpToDetail(item.get("id"))}>
               <img className="pic" src={item.get("imgUrl")} alt="" />
               <ListInfo>
                 <h3 className="title">{item.get("title")}</h3>
@@ -26,14 +36,14 @@ class List extends Component {
 }
 const mapStateToProps = (state) => ({
   list: state.getIn(["home", "articleList"]),
-  page: state.getIn(['home','page'])
+  page: state.getIn(["home", "page"]),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getMoreList(page) {
     console.log(page);
-    dispatch(actionCreaters.getMoreList(page))
-  }
-}) 
+    dispatch(actionCreaters.getMoreList(page));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

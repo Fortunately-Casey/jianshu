@@ -6,24 +6,26 @@ import Recommend from "./components/Recommend";
 import Writer from "./components/Writer";
 import { actionCreaters } from "./store/index";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 class Home extends Component {
   componentDidMount() {
     this.props.changeHomeList();
     this.bindEvents();
   }
-  componentWillUnmount() {
-    window.removeEventListener('scroll',this.props.changeScrollTopShow)
+  componentWillUnmount() { 
+    window.removeEventListener("scroll", this.props.changeScrollTopShow);
   }
-  scrollToTop() {
+  scrollToTop() { 
+    console.log(this.props)
     window.scrollTo(0, 0);
   }
   bindEvents() {
     window.addEventListener("scroll", this.props.changeScrollTopShow);
   }
-  
+
   render() {
     const { isShowScrollTop } = this.props;
-    console.log(isShowScrollTop)
+    const scrollToTop = this.scrollToTop.bind(this);
     return (
       <HomeWrapper>
         <HomeLeft>
@@ -33,14 +35,14 @@ class Home extends Component {
             alt=""
           />
           <Topic></Topic>
-          <List></List>
+          <List history={this.props.history}></List>
         </HomeLeft>
         <HomeRight>
           <Recommend></Recommend>
           <Writer></Writer>
         </HomeRight>
         {isShowScrollTop ? (
-          <BackTop onClick={this.scrollToTop}>返回Top</BackTop>
+          <BackTop onClick={scrollToTop}>返回Top</BackTop>
         ) : null}
       </HomeWrapper>
     );
@@ -63,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   isShowScrollTop: state.getIn(["home", "isShowSrollToTop"]),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));
