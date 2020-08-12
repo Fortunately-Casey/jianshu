@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as constans from './contans';
+import * as constans from './constans';
 import {
   fromJS
 } from "immutable"

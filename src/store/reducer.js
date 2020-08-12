@@ -10,10 +10,14 @@ import {
 import {
   reducer as HomeReducer
 } from '../pages/home/store';
+import {
+  reducer as DetailReducer
+} from '../pages/detail/store';
 
 const reducer = combineReducers({
   header: HeaderReducer,
-  home: HomeReducer
+  home: HomeReducer,
+  detail: DetailReducer
 })
 
 export default reducer;

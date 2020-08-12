@@ -5,6 +5,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "../common/header/index";
 
+// 路由懒加载
 import Home from "../pages/home/loadable";
 import Detail from "../pages/detail/loadable";
 

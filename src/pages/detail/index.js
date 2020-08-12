@@ -1,20 +1,32 @@
-import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import React, { PureComponent } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { DetailWrapper, Header, Content } from "./style";
+import { actionCreaters } from './store'
 
-class Detail extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      
-    }
-  }
-
+class Detail extends PureComponent {
   componentDidMount() {
-    console.log(this.props.location.state);
+    this.props.getDetail(this.props.location.state.id);
   }
   render() {
-    return <div>Detail</div>;
+    const { title, content } = this.props;
+    return (
+      <DetailWrapper>
+        <Header>{title}</Header>
+        <Content dangerouslySetInnerHTML={{ __html: content }}></Content>
+      </DetailWrapper>
+    );
   }
 }
+const mapStateToProps = (state) => ({
+  title: state.getIn(["detail", "title"]),
+  content: state.getIn(["detail", "content"]),
+});
 
-export default withRouter(Detail);
+const mapDispatchToProps = (dispatch) => ({
+  getDetail(id) {
+    dispatch(actionCreaters.getDetail(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Detail));

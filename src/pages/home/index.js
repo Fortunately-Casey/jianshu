@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 import Topic from "./components/Topic";
 import List from "./components/List";
@@ -7,7 +7,7 @@ import Writer from "./components/Writer";
 import { actionCreaters } from "./store/index";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-class Home extends Component {
+class Home extends PureComponent {
   componentDidMount() {
     this.props.changeHomeList();
     this.bindEvents();

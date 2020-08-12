@@ -5,7 +5,7 @@ import recommend1 from '../../../static/recommend1.png';
 import recommend2 from '../../../static/recommend2.png';
 import recommend3 from '../../../static/recommend3.png';
 import recommend4 from '../../../static/recommend4.png';
-import * as constans from './contans';
+import * as constans from './constans';
 const defaultState = fromJS({
   topicList: [],
   articleList: [],

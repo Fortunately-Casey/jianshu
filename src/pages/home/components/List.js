@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ListItem, ListInfo, LoadMore } from "../style";
 import { connect } from "react-redux";
 import { actionCreaters } from "../store";
 
-class List extends Component {
+class List extends PureComponent {
   jumpToDetail(id) {
     this.props.history.push({
       pathname: "/detail",
